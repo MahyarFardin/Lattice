@@ -1,27 +1,56 @@
+import { type CSSProperties, useEffect, useRef, useState } from 'react'
 import { processSteps } from '../data/content'
-import Reveal from './Reveal'
-import './Process.css'
+import Scramble from './Scramble'
+import SplitText from './SplitText'
 
 export default function Process() {
-  return (
-    <section className="section section-border-top">
-      <div className="container">
-        <Reveal className="section-head">
-          <span className="section-label">How We Work</span>
-          <h2 className="section-heading">A straightforward process</h2>
-        </Reveal>
+  const sectionRef = useRef<HTMLElement>(null)
+  const [active, setActive] = useState(0)
 
-        <Reveal as="div" className="process-rail-wrap">
-          <div className="process-grid">
-            {processSteps.map((step, i) => (
-              <Reveal key={step.number} as="div" className="process-step" delay={i * 80}>
-                <span className="process-step-number">{step.number}</span>
-                <h3 className="process-step-title">{step.title}</h3>
-                <p className="process-step-description">{step.description}</p>
-              </Reveal>
-            ))}
+  useEffect(() => {
+    const section = sectionRef.current!
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const box = section.getBoundingClientRect()
+      const span = box.height - window.innerHeight
+      const p = span > 0 ? Math.min(Math.max(-box.top / span, 0), 1) : 0
+      section.style.setProperty('--p', `${p}`)
+      setActive(Math.round(p * (processSteps.length - 1)))
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
+  return (
+    <section id="process" ref={sectionRef} className="process">
+      <div className="process-pin">
+        <div className="process-head">
+          <Scramble className="eyebrow" text="// how we work" />
+          <SplitText className="h2" text="Four steps from idea to launch." />
+        </div>
+        <div className="process-track">
+          <div className="process-line" aria-hidden="true">
+            <span />
           </div>
-        </Reveal>
+          {processSteps.map((step, i) => (
+            <article key={step.title} className={`step ${i <= active ? 'is-lit' : ''}`} style={{ '--i': i } as CSSProperties}>
+              <span className="step-node" aria-hidden="true" />
+              <span className="step-index">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   )

@@ -1,42 +1,26 @@
 CONTENT TO FILL IN BEFORE LAUNCH
 =================================
 
-Everything below lives in src/data/content.ts. Edit that file directly —
-the whole site reads from it, nothing else needs to change.
+All content lives in src/data/content.ts.
 
-1) SITE CONFIG (siteConfig)
-   - email            real contact email (currently hello@example.com)
-   - upworkUrl         your Upwork profile URL
-   - githubUrl         team/org GitHub URL
-   - linkedinUrl       LinkedIn company or profile URL
+1) siteConfig
+   - upworkUrl        your Upwork profile link (used by every "Hire" button)
+   - upworkRating     your real Upwork rating
+   - email, githubUrl, linkedinUrl
 
-2) TEAM (team array, 2 entries)
-   For each of the two specialists:
-   - name              real name (currently "Specialist One" / "Specialist Two")
-   - bio                1-2 sentence bio (placeholders are usable as-is or rewrite)
-   - skills             adjust the list if it doesn't match their real stack
-   - photoUrl           optional — path to a professional photo (e.g. "/team/alex.jpg"
-                        dropped in the public/ folder). Leave undefined to keep the
-                        typographic initials avatar.
+2) team
+   - github / linkedin   personal links for each member
+   - photoUrl            add a photo path (for example "/team/nima.jpg" in public/).
+                         Without it, the initials avatar with the glitch effect is shown.
 
-3) SELECTED WORK (projects array, currently 4 placeholder projects)
-   For each project you want to keep/replace:
-   - title, description, category, tech[]  — real project details
-   - githubUrl / demoUrl                   — optional, omit to hide the link row
-   - imageUrl                              — optional path to a real screenshot
-                                              (e.g. "/work/project-01.png" dropped in
-                                              public/). Leave undefined to keep the
-                                              generated placeholder block.
-   Feel free to add, remove, or reorder entries — just keep the `number` field
-   sequential (01, 02, 03...).
+3) projects
+   Four placeholder projects. Replace title, description, tech and kind.
 
-4) SERVICES / PROCESS / WHY-US (services, processSteps, whyUs)
-   These are written to be usable as-is. Edit only if the actual scope,
-   process, or advantages differ from what's written.
+4) stats
+   24 projects, 18 clients, 6 years are placeholder numbers. Use real ones.
 
-GITHUB PAGES SETUP (one-time, not content, but required to go live)
-   - Push this repo to GitHub.
-   - Settings → Pages → Source → "GitHub Actions".
-   - Confirm the repo name — the deploy workflow derives the site's base
-     path from it automatically. See README.md for the one exception
-     (user/org root pages like <you>.github.io).
+5) testimonials
+   Three placeholders. Paste real Upwork reviews and client names.
+
+6) Badge text "[Top Rated badge]" in src/components/Trust.tsx
+   Replace it with your real Upwork badge or remove it.

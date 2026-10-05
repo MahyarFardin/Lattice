@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { navLinks, siteConfig } from '../data/content'
-import './Navbar.css'
+import Btn from './Btn'
+import Logo from './Logo'
 
 export default function Navbar({ scrolled }: { scrolled: boolean }) {
   const [open, setOpen] = useState(false)
@@ -8,25 +9,21 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
   return (
     <header className={`navbar ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="container navbar-inner">
-        <a href="#top" className="navbar-brand">
-          <span className="navbar-mark" aria-hidden="true">
-            <span className="navbar-mark-node" />
-            <span className="navbar-mark-node is-accent" />
-          </span>
-          {siteConfig.brandName}
-        </a>
+        <Logo />
 
         <nav className="navbar-links" aria-label="Primary">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="link-underline link-underline-accent">
+            <a key={link.href} href={link.href} className="link">
               {link.label}
             </a>
           ))}
         </nav>
 
-        <a href="#contact" className="btn btn-primary navbar-cta">
-          Let's work together
-        </a>
+        <div className="navbar-cta">
+          <Btn href={siteConfig.upworkUrl} external>
+            Hire us
+          </Btn>
+        </div>
 
         <button
           type="button"
@@ -36,24 +33,21 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
           aria-label={open ? 'Close menu' : 'Open menu'}
           onClick={() => setOpen((v) => !v)}
         >
-          <span className="navbar-toggle-bars">
-            <span />
-            <span />
-            <span />
-          </span>
+          <span />
+          <span />
         </button>
       </div>
 
       {open && (
-        <nav id="mobile-menu" className="navbar-mobile-menu" aria-label="Mobile">
+        <nav id="mobile-menu" className="navbar-mobile" aria-label="Mobile">
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
               {link.label}
             </a>
           ))}
-          <a href="#contact" className="btn btn-primary" onClick={() => setOpen(false)}>
-            Let's work together
-          </a>
+          <Btn href={siteConfig.upworkUrl} external>
+            Hire us on Upwork
+          </Btn>
         </nav>
       )}
     </header>
