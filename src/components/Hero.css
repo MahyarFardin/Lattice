@@ -1,0 +1,186 @@
+.hero {
+  padding-block: clamp(3rem, 8vw, 6rem) clamp(3rem, 6vw, 5rem);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  align-items: center;
+}
+
+.hero-copy {
+  max-width: 640px;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1.25rem;
+}
+
+.hero-headline {
+  font-size: var(--text-hero);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.hero-word {
+  display: inline-block;
+  margin-right: 0.26em;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.reveal.is-visible .hero-word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-description {
+  margin-top: 1.5rem;
+  font-size: var(--text-body);
+  color: var(--color-text-secondary);
+  max-width: 48ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+/* Diagram */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 2.5rem;
+}
+
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--color-border-strong) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 72%);
+  opacity: 0.6;
+}
+
+.hero-diagram {
+  width: 100%;
+  max-width: 340px;
+  position: relative;
+  animation: diagram-float 6s var(--ease-out) infinite;
+}
+
+@keyframes diagram-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.hero-diagram-line {
+  stroke: var(--color-border-strong);
+  stroke-width: 1.5;
+}
+
+.hero-diagram-junction {
+  fill: var(--color-border-strong);
+}
+
+.hero-diagram-orbit {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1;
+  opacity: 0.3;
+  transform-origin: 120px 48px;
+  animation: orbit-spin 24s linear infinite;
+}
+
+.hero-diagram-dot {
+  fill: var(--color-accent);
+  animation: pulse-travel 3.2s var(--ease-out) infinite;
+}
+
+.hero-diagram-dot.is-amber {
+  fill: var(--color-amber);
+  animation-delay: 0.4s;
+}
+
+.hero-diagram-node-circle {
+  fill: var(--color-surface);
+  stroke: var(--color-border-strong);
+  stroke-width: 1.5;
+  transition: stroke var(--duration-base) var(--ease-out);
+}
+
+.hero-diagram-node-circle.is-accent {
+  stroke: var(--color-accent);
+}
+
+.hero-diagram-node-circle.is-amber {
+  stroke: var(--color-amber);
+}
+
+.hero-diagram:hover .hero-diagram-node-circle {
+  stroke: var(--color-accent);
+}
+
+.hero-diagram:hover .hero-diagram-node-circle.is-amber {
+  stroke: var(--color-amber);
+}
+
+.hero-diagram-node-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  fill: var(--color-text);
+  text-anchor: middle;
+}
+
+@keyframes pulse-travel {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .hero-visual {
+    justify-content: flex-end;
+  }
+}
