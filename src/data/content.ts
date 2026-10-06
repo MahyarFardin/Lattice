@@ -1,183 +1,204 @@
-// All editable site content lives here. Replace placeholder values before
-// launch — see CONTENT_TODO.txt at the project root for the full checklist.
-
 export const siteConfig = {
   brandName: 'Lattice',
-  email: 'hello@example.com', // TODO: real contact email
-  upworkUrl: 'https://www.upwork.com/freelancers/~000000000000000000', // TODO
-  githubUrl: 'https://github.com/your-org', // TODO
-  linkedinUrl: 'https://www.linkedin.com/company/your-company', // TODO
+  email: 'hello@example.com',
+  upworkUrl: 'https://www.upwork.com/freelancers/~000000000000000000',
+  githubUrl: 'https://github.com/your-org',
+  linkedinUrl: 'https://www.linkedin.com/company/your-company',
+  upworkRating: '5.0',
 }
 
 export const navLinks = [
-  { label: 'Work', href: '#work' },
   { label: 'Services', href: '#services' },
   { label: 'Team', href: '#team' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Process', href: '#process' },
+  { label: 'Work', href: '#work' },
 ]
 
 export const hero = {
-  label: 'AI / ML × WEB ENGINEERING',
-  headline: 'Building digital products with AI at the core.',
-  description:
-    "We design and build intelligent web products — from machine-learning systems and AI workflows to polished, production-ready applications.",
+  prompt: '$ lattice --build web ai',
+  headline: 'We weave Web & AI into products that work.',
+  shimmer: ['Web', '&', 'AI'],
+  sub: 'Two engineers, one team. We build the full product, from the AI model to the API to the interface.',
 }
 
-export const capabilities = [
-  'AI & ML',
-  'Web Development',
-  'Data Science',
-  'Full-Stack Engineering',
-]
-
-export type Project = {
-  number: string
-  title: string
-  description: string
-  category: string
-  tech: string[]
-  githubUrl?: string
-  demoUrl?: string
-  imageUrl?: string // TODO: add a real screenshot; falls back to a generated placeholder
-}
-
-export const projects: Project[] = [
-  {
-    number: '01',
-    title: 'Vision-Based Defect Detection',
-    description:
-      'A computer-vision pipeline that flags manufacturing defects from line-camera footage in real time.',
-    category: 'AI / Computer Vision',
-    tech: ['Python', 'PyTorch', 'OpenCV', 'FastAPI'],
-    githubUrl: undefined, // TODO: add link or remove field
-    demoUrl: undefined,
-  },
-  {
-    number: '02',
-    title: 'Document Q&A Assistant',
-    description:
-      'An LLM-powered assistant that answers questions over a private document set with cited sources.',
-    category: 'AI / LLM Application',
-    tech: ['Python', 'LangChain', 'pgvector', 'React'],
-    githubUrl: undefined,
-    demoUrl: undefined,
-  },
-  {
-    number: '03',
-    title: 'Operations Dashboard',
-    description:
-      'A full-stack internal tool for tracking orders, inventory and staffing across multiple locations.',
-    category: 'Full-Stack Web Application',
-    tech: ['TypeScript', 'React', 'Node.js', 'PostgreSQL'],
-    githubUrl: undefined,
-    demoUrl: undefined,
-  },
-  {
-    number: '04',
-    title: 'Usage Analytics Platform',
-    description:
-      'A self-serve analytics product that turns raw event data into cohort and retention reporting.',
-    category: 'Data / Analytics Platform',
-    tech: ['Python', 'dbt', 'Next.js', 'ClickHouse'],
-    githubUrl: undefined,
-    demoUrl: undefined,
-  },
+export const floaters = [
+  { label: 'Go', top: '14%', left: '56%', depth: 0.12 },
+  { label: 'Node.js', top: '84%', left: '48%', depth: 0.22 },
+  { label: 'React', top: '20%', left: '80%', depth: 0.18 },
+  { label: 'Python', top: '78%', left: '70%', depth: 0.1 },
+  { label: 'PyTorch', top: '46%', left: '88%', depth: 0.26 },
 ]
 
 export const services = [
   {
-    title: 'AI / ML',
-    description: 'Machine learning systems and intelligent applications.',
+    icon: 'web' as const,
+    title: 'Web Development',
+    tagline: 'Frontend and backend, built together.',
+    stack: 'React / TypeScript / Go / Node.js / PostgreSQL',
     items: [
-      'LLM applications',
-      'Computer vision',
-      'Machine learning models',
-      'Generative AI',
-      'Data analysis',
-      'AI automation',
-      'Model integration',
-      'AI APIs',
-    ],
-  },
-  {
-    title: 'Web / Software',
-    description: 'Production-ready digital products.',
-    items: [
-      'Frontend applications',
-      'Full-stack applications',
+      'Frontend apps and dashboards',
+      'Backend APIs and services',
+      'Databases and data models',
       'SaaS platforms',
-      'REST APIs',
-      'Backend systems',
-      'Dashboards',
-      'Database integration',
-      'Deployment',
+      'Deployment and CI/CD',
+    ],
+  },
+  {
+    icon: 'ai' as const,
+    title: 'AI Solutions',
+    tagline: 'Models that ship inside real products.',
+    stack: 'Python / PyTorch / OpenCV / Generative AI / LLMs',
+    items: [
+      'Computer vision',
+      'Generative AI',
+      'Custom ML models',
+      'AI integration into your product',
+      'Research prototypes to production',
     ],
   },
 ]
 
-export const processSteps = [
-  {
-    number: '01',
-    title: 'Understand',
-    description: 'We clarify the problem, requirements and desired outcome.',
-  },
-  {
-    number: '02',
-    title: 'Build',
-    description: 'We design and implement the technical solution.',
-  },
-  {
-    number: '03',
-    title: 'Iterate',
-    description: 'We test, refine and improve based on feedback.',
-  },
-  {
-    number: '04',
-    title: 'Deliver',
-    description: 'We ship a clean, maintainable and documented result.',
-  },
-]
-
-export type TeamMemberData = {
+export type TeamMember = {
   name: string
+  initials: string
   role: string
   bio: string
   skills: string[]
+  terminal: string[]
+  github: string
+  linkedin: string
   photoUrl?: string
+  website?: string
 }
 
-export const team: TeamMemberData[] = [
+export const team: TeamMember[] = [
   {
-    name: 'Specialist One', // TODO: real name
-    role: 'Web Development',
-    bio: 'Full-stack developer focused on building modern, reliable and scalable web applications.',
-    skills: ['React', 'Next.js', 'Node.js', 'TypeScript', 'APIs', 'Databases'],
-    photoUrl: undefined, // TODO: add a professional photo if available
+    name: 'Nima Mahini',
+    initials: 'NM',
+    role: 'Back-end Developer',
+    bio: 'I build the APIs, databases and services that hold a product up. Fast, scalable systems that stay easy to maintain.',
+    skills: ['Golang', 'Node.js', 'APIs', 'Databases', 'Scalable systems'],
+    terminal: ['$ whoami', 'nima / back-end developer', '$ stack', 'go, node.js, sql'],
+    github: 'https://github.com/your-org',
+    linkedin: 'https://www.linkedin.com/in/your-profile',
   },
   {
-    name: 'Specialist Two', // TODO: real name
-    role: 'AI / ML',
-    bio: 'AI/ML engineer focused on machine learning, computer vision, generative AI and data-driven systems.',
-    skills: ['Python', 'PyTorch', 'Machine Learning', 'Computer Vision', 'LLMs', 'Data Science'],
-    photoUrl: undefined,
+    name: 'Mahyar Fardinfar',
+    initials: 'MF',
+    role: 'AI Engineer & Researcher',
+    bio: 'Researcher at Bilkent University (LiRA Lab) with published work, presented at an international conference. I turn research into models that run in production.',
+    skills: ['Computer vision', 'LLMs', 'Generative AI', 'Robotics', 'Machine learning'],
+    terminal: ['$ whoami', 'mahyar / ai engineer + researcher', '$ lab', 'bilkent university / lira lab'],
+    github: 'https://github.com/MahyarFardin',
+    linkedin: 'https://www.linkedin.com/in/mahyar-fardinfar',
+    photoUrl: '/mahyar.jpeg',
+    website: 'https://mahyarfardin.github.io',
   },
 ]
 
-export const whyUs = [
+export const chain = ['AI model', 'API', 'Interface']
+
+export const processSteps = [
   {
-    title: 'Technical depth',
-    description: 'We are engineers, not just project managers. We build the systems ourselves.',
+    title: 'Discuss',
+    text: 'A short call to map the problem, scope and budget. You get a clear plan, not a sales pitch.',
   },
   {
-    title: 'Complementary expertise',
-    description: 'AI/ML and web engineering under one team means fewer handoffs between specialists.',
+    title: 'Design',
+    text: 'We sketch the architecture, data and interface before we write code.',
   },
   {
-    title: 'Direct communication',
-    description: 'Clients communicate directly with the people building the product.',
+    title: 'Build',
+    text: 'Short cycles with a working build every week. You see progress, not status reports.',
   },
   {
-    title: 'Practical delivery',
-    description: 'We focus on useful, maintainable software rather than unnecessary complexity.',
+    title: 'Deliver',
+    text: 'Clean code, docs and a proper handover. We stay reachable after launch.',
+  },
+]
+
+export type Project = {
+  title: string
+  description: string
+  category: string
+  tech: string[]
+  kind: 'vision' | 'chat' | 'dash' | 'chart'
+  link?: string
+  imageUrl?: string
+}
+
+export const projects: Project[] = [
+  {
+    title: 'Monocular Depth Estimation',
+    category: 'Computer vision',
+    description: 'PyTorch regeneration of a published monocular depth estimation paper via transfer learning, reproducing results originally reported in TensorFlow.',
+    tech: ['Python', 'PyTorch', 'Transfer learning', 'Computer vision'],
+    kind: 'vision',
+    link: 'https://github.com/MahyarFardin/Monocular_depth_estimation_via_transfer_learning',
+    imageUrl: '/depth.png',
+  },
+  {
+    title: 'Decoder-only Code Completion',
+    category: 'Generative AI',
+    description: 'A transformer-based Python code completion model with causal self-attention, trained on the py150 dataset.',
+    tech: ['Python', 'PyTorch', 'Transformers', 'NLP'],
+    kind: 'chat',
+    link: 'https://github.com/MahyarFardin/Decoder_only_Code_Completion',
+    imageUrl: '/llm.png',
+  },
+  {
+    title: 'Operations Dashboard',
+    category: 'Full-stack web',
+    description: 'One internal tool for orders, inventory and staffing across locations.',
+    tech: ['TypeScript', 'React', 'Go', 'PostgreSQL'],
+    kind: 'dash',
+  },
+  {
+    title: 'Usage Analytics',
+    category: 'Data platform',
+    description: 'Raw event data turned into cohort and retention reports.',
+    tech: ['Node.js', 'ClickHouse', 'Next.js', 'Redis'],
+    kind: 'chart',
+  },
+]
+
+export const techStrip = [
+  'Go',
+  'Node.js',
+  'TypeScript',
+  'React',
+  'Next.js',
+  'PostgreSQL',
+  'Redis',
+  'Docker',
+  'Python',
+  'PyTorch',
+  'OpenCV',
+  'Diffusion models',
+  'FastAPI',
+  'AWS',
+]
+
+export const stats = [
+  { value: 24, suffix: '+', label: 'Projects delivered' },
+  { value: 18, suffix: '+', label: 'Happy clients' },
+  { value: 6, suffix: '+', label: 'Years of experience' },
+]
+
+export const testimonials = [
+  {
+    quote: 'Placeholder. Replace this with a real review from an Upwork client.',
+    name: '[Client name]',
+    company: '[Company]',
+  },
+  {
+    quote: 'Placeholder. Short, specific praise about the result works best here.',
+    name: '[Client name]',
+    company: '[Company]',
+  },
+  {
+    quote: 'Placeholder. Mention what was built and how the work went.',
+    name: '[Client name]',
+    company: '[Company]',
   },
 ]

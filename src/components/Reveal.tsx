@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState, type ElementType, type ReactNode } from 'react'
+import { type ElementType, type ReactNode } from 'react'
+import { useInView } from '../hooks/fx'
 
 type RevealProps = {
   children: ReactNode
@@ -8,29 +9,12 @@ type RevealProps = {
 }
 
 export default function Reveal({ children, as: Tag = 'div', className = '', delay = 0 }: RevealProps) {
-  const ref = useRef<HTMLElement>(null)
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.15 },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
+  const [ref, seen] = useInView<HTMLElement>(0.15)
 
   return (
     <Tag
       ref={ref}
-      className={`reveal ${visible ? 'is-visible' : ''} ${className}`.trim()}
+      className={`reveal ${seen ? 'is-visible' : ''} ${className}`.trim()}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}
