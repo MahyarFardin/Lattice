@@ -59,10 +59,26 @@ export default function Work() {
                     <i />
                     <i />
                   </div>
-                  {mockups[project.kind]}
+                  {project.imageUrl ? (
+                    <img className="project-shot-img" src={project.imageUrl} alt={project.title} />
+                  ) : (
+                    mockups[project.kind]
+                  )}
                   <div className="project-over">
                     <p>{project.description}</p>
-                    <span className="mono-label">[case study link]</span>
+                    {project.link ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mono-label"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        [view on github]
+                      </a>
+                    ) : (
+                      <span className="mono-label">[case study link]</span>
+                    )}
                   </div>
                 </div>
                 <div className="project-meta">

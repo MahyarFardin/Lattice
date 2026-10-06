@@ -277,8 +277,6 @@ html.is-loading .split.is-in .split-word {
 }
 
 .btn {
-  --tx: 0px;
-  --ty: 0px;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -290,12 +288,15 @@ html.is-loading .split.is-in .split-word {
   font-family: var(--font-head);
   font-size: 1rem;
   font-weight: 700;
-  translate: var(--tx) var(--ty);
   transition:
-    translate 0.3s var(--ease),
+    scale 0.25s var(--ease),
     box-shadow 0.3s,
     background 0.3s,
     border-color 0.3s;
+}
+
+.btn:hover {
+  scale: 1.035;
 }
 
 .btn-lg {

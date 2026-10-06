@@ -386,56 +386,22 @@
 
 .service-list {
   display: grid;
-  grid-template-rows: 0fr;
   margin-top: auto;
-  transition: grid-template-rows 0.55s var(--ease);
 }
 
 .service-list ul {
-  min-height: 0;
-  overflow: hidden;
   border-top: 1px solid var(--line);
-}
-
-.service:hover .service-list,
-.service:focus-within .service-list,
-.service:focus .service-list {
-  grid-template-rows: 1fr;
 }
 
 .service-list li {
   padding: 0.55rem 0;
   border-bottom: 1px solid var(--line);
-  opacity: 0;
-  translate: 0 12px;
-  transition:
-    opacity 0.4s,
-    translate 0.5s var(--ease);
-  transition-delay: calc(var(--i) * 45ms);
-}
-
-.service:hover .service-list li,
-.service:focus-within .service-list li,
-.service:focus .service-list li {
-  opacity: 1;
-  translate: 0 0;
 }
 
 .service-list li::before {
   content: '+ ';
   color: var(--cyan);
   font-family: var(--font-mono);
-}
-
-@media (hover: none) {
-  .service-list {
-    grid-template-rows: 1fr;
-  }
-
-  .service-list li {
-    opacity: 1;
-    translate: 0 0;
-  }
 }
 
 .team-grid {
@@ -477,6 +443,7 @@
     radial-gradient(circle at 30% 20%, rgba(124, 92, 255, 0.35), transparent 60%),
     radial-gradient(circle at 80% 90%, rgba(34, 228, 255, 0.22), transparent 55%), var(--bg-2);
   overflow: hidden;
+  transform: translateZ(0);
 }
 
 .avatar img {
@@ -889,6 +856,20 @@
 }
 
 .project:hover .project-shot svg {
+  scale: 1.06;
+}
+
+.project-shot-img {
+  position: absolute;
+  inset: 0;
+  top: 22px;
+  width: 100%;
+  height: calc(100% - 22px);
+  object-fit: cover;
+  transition: scale 0.6s var(--ease);
+}
+
+.project:hover .project-shot-img {
   scale: 1.06;
 }
 

@@ -16,7 +16,7 @@ export default function Team() {
           {team.map((member, index) => (
             <Reveal key={member.name} delay={index * 120} className="team-slot">
               <Card className="member">
-                <div className="avatar" data-initials={member.initials}>
+                <div className="avatar" data-initials={member.photoUrl ? undefined : member.initials}>
                   {member.photoUrl ? (
                     <img src={member.photoUrl} alt={member.name} />
                   ) : (
@@ -39,6 +39,11 @@ export default function Team() {
                   <a href={member.linkedin} target="_blank" rel="noreferrer" className="link">
                     LinkedIn
                   </a>
+                  {member.website && (
+                    <a href={member.website} target="_blank" rel="noreferrer" className="link">
+                      Website
+                    </a>
+                  )}
                 </div>
               </Card>
             </Reveal>

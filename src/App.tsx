@@ -10,7 +10,7 @@ import Process from './components/Process'
 import ScrollProgress from './components/ScrollProgress'
 import Services from './components/Services'
 import Team from './components/Team'
-import Trust from './components/Trust'
+// import Trust from './components/Trust'
 import Work from './components/Work'
 import { useScrolled } from './hooks/useScrolled'
 
@@ -39,7 +39,7 @@ export default function App() {
         <Flow />
         <Work />
         <Flow />
-        <Trust />
+        {/* <Trust /> */}
         <CTA />
       </main>
       <Footer />

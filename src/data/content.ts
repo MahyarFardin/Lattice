@@ -47,7 +47,7 @@ export const services = [
     icon: 'ai' as const,
     title: 'AI Solutions',
     tagline: 'Models that ship inside real products.',
-    stack: 'Python / PyTorch / OpenCV / Diffusion models',
+    stack: 'Python / PyTorch / OpenCV / Generative AI / LLMs',
     items: [
       'Computer vision',
       'Generative AI',
@@ -68,6 +68,7 @@ export type TeamMember = {
   github: string
   linkedin: string
   photoUrl?: string
+  website?: string
 }
 
 export const team: TeamMember[] = [
@@ -86,10 +87,12 @@ export const team: TeamMember[] = [
     initials: 'MF',
     role: 'AI Engineer & Researcher',
     bio: 'Researcher at Bilkent University (LiRA Lab) with published work, presented at an international conference. I turn research into models that run in production.',
-    skills: ['Computer vision', 'Diffusion models', 'Generative AI', 'Robotics', 'Machine learning'],
+    skills: ['Computer vision', 'LLMs', 'Generative AI', 'Robotics', 'Machine learning'],
     terminal: ['$ whoami', 'mahyar / ai engineer + researcher', '$ lab', 'bilkent university / lira lab'],
-    github: 'https://github.com/your-org',
-    linkedin: 'https://www.linkedin.com/in/your-profile',
+    github: 'https://github.com/MahyarFardin',
+    linkedin: 'https://www.linkedin.com/in/mahyar-fardinfar',
+    photoUrl: '/mahyar.jpeg',
+    website: 'https://mahyarfardin.github.io',
   },
 ]
 
@@ -120,22 +123,28 @@ export type Project = {
   category: string
   tech: string[]
   kind: 'vision' | 'chat' | 'dash' | 'chart'
+  link?: string
+  imageUrl?: string
 }
 
 export const projects: Project[] = [
   {
-    title: 'Defect Detection',
+    title: 'Monocular Depth Estimation',
     category: 'Computer vision',
-    description: 'Real-time defect detection from line-camera footage on a factory floor.',
-    tech: ['Python', 'PyTorch', 'OpenCV', 'FastAPI'],
+    description: 'PyTorch regeneration of a published monocular depth estimation paper via transfer learning, reproducing results originally reported in TensorFlow.',
+    tech: ['Python', 'PyTorch', 'Transfer learning', 'Computer vision'],
     kind: 'vision',
+    link: 'https://github.com/MahyarFardin/Monocular_depth_estimation_via_transfer_learning',
+    imageUrl: '/depth.png',
   },
   {
-    title: 'Document Assistant',
+    title: 'Decoder-only Code Completion',
     category: 'Generative AI',
-    description: 'An assistant that answers questions over private documents, with sources.',
-    tech: ['Python', 'LLM', 'pgvector', 'React'],
+    description: 'A transformer-based Python code completion model with causal self-attention, trained on the py150 dataset.',
+    tech: ['Python', 'PyTorch', 'Transformers', 'NLP'],
     kind: 'chat',
+    link: 'https://github.com/MahyarFardin/Decoder_only_Code_Completion',
+    imageUrl: '/llm.png',
   },
   {
     title: 'Operations Dashboard',
